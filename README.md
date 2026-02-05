@@ -122,20 +122,20 @@ The production model version updates automatically once retraining completes.
 - Python
 - Streamlit
 - XGBoost
-- Evidently AI
 - SHAP
 - LIME
 - Joblib
 - Scikit-learn
+- SciPy
 
 ---
 
 ## Use Cases
 
 - Customer churn prediction systems
+- Model monitoring and governance demos
 - Continuous ML deployment pipelines
 - MLOps experimentation and education
-- Model monitoring and governance demos
 
 ---
 
@@ -146,3 +146,4 @@ The production model version updates automatically once retraining completes.
 - Cloud-based model registry
 - Feature-level drift attribution
 - Alerting via Slack or email
+
