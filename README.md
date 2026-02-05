@@ -1,63 +1,148 @@
-Self-Healing MLOps System: Customer Churn
+# Self-Healing MLOps System for Customer Churn Prediction
 
-A production-grade machine learning system that not only predicts churn but also monitors its own health and automatically retrains when data drift is detected.
+A production-grade MLOps project that predicts customer churn while continuously monitoring its own performance.
+When data drift is detected, the system automatically retrains the model and deploys a new version without downtime.
 
-Architecture
+This project demonstrates an end-to-end, self-healing machine learning lifecycle suitable for real-world production environments.
 
-```bash
+---
+
+## Overview
+
+This system combines churn prediction, automated monitoring, model versioning, and retraining into a single cohesive workflow.
+
+Core capabilities:
+- Real-time churn prediction
+- Statistical drift detection on live data
+- Automatic model retraining and deployment
+- Built-in explainability for model decisions
+
+---
+
+## System Architecture
+
+```mermaid
 graph LR
-    A[Data Stream] --> B{Drift Detector};
-    B -- Stable --> C[Prediction API];
-    B -- Drift! --> D[Retraining Engine];
-    D --> E[Model Registry];
-    E --> C;
+    A[Data Stream] --> B{Drift Detector}
+    B -- Stable --> C[Prediction API]
+    B -- Drift Detected --> D[Retraining Engine]
+    D --> E[Model Registry]
+    E --> C
 ```
 
-Key Features
+---
 
-Production Model Registry: Local version control for ML models (saves artifacts as model_v1.joblib, model_v2.joblib, etc.).
+## Key Features
 
-Automated Drift Detection: Uses Evidently AI to compare incoming production traffic against training data using statistical tests (KS-test).
+### Production Model Registry
+- Local artifact-based model versioning
+- Models stored as:
+  - model_v1.joblib
+  - model_v2.joblib
+- Metadata stored in JSON for traceability
 
-Auto-Retraining Pipeline: When drift is detected, the system ingests the new data, retrains the XGBoost model, and hot-swaps the production model without downtime.
+### Automated Drift Detection
+- Uses Evidently AI for data drift monitoring
+- Compares production traffic with training data
+- Statistical tests include:
+  - Kolmogorov-Smirnov (KS) Test
 
-Explainability (XAI): Integrated SHAP and LIME for local and global model interpretation.
+### Auto-Retraining Pipeline
+- Automatically triggers retraining when drift is detected
+- Ingests new data and retrains an XGBoost model
+- Seamless hot-swap of production models with zero downtime
 
+### Explainable AI (XAI)
+- SHAP for global and local explanations
+- LIME for instance-level interpretability
+- Helps build trust and debug model behavior
 
-Project Structure
+---
+
+## Project Structure
 
 ```bash
-├── app.py                 # Main Streamlit Dashboard
-├── src/                   # Core Logic
-│   ├── mlops_engine.py    # Retraining & Registry Logic
-│   ├── monitoring.py      # Evidently AI Drift Detection
-│   └── ml_logic.py        # Model Architecture
-├── models/                # Artifact Store (JSON + .joblib)
-└── data/                  # Data Store
+├── app.py                  # Streamlit dashboard entry point
+├── src/
+│   ├── mlops_engine.py     # Retraining logic and model registry
+│   ├── monitoring.py       # Drift detection using Evidently AI
+│   └── ml_logic.py         # Model training and inference logic
+├── models/                 # Model artifacts and metadata
+│   ├── model_v1.joblib
+│   └── registry.json
+├── data/                   # Training and simulated production data
+├── requirements.txt
+└── README.md
 ```
 
-Setup & Run
+---
 
-Install Requirements
+## Setup Instructions
+
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run the App
+### Run the Application
 
 ```bash
 streamlit run app.py
 ```
 
-Simulate MLOps Workflow
+---
 
-Go to Sidebar -> Select "Drifted (High Churn)".
+## Simulating the MLOps Workflow
 
-Click Generate Traffic.
+1. Open the Streamlit dashboard
+2. From the sidebar, select Drifted (High Churn)
+3. Click Generate Traffic
+4. Navigate to the Drift Monitor tab
+5. Click Run Check to observe drift detection
+6. Go to the MLOps Pipeline tab
+7. Click Trigger Retraining
 
-Go to Drift Monitor tab -> Click Run Check (See the red alert).
+The production model version updates automatically once retraining completes.
 
-Go to MLOps Pipeline tab -> Click Trigger Retraining.
+---
 
-Watch the Model Version update automatically!
+## Dashboard Features
+
+- Live churn prediction
+- Drift status monitoring with alerts
+- Model version tracking
+- SHAP and LIME visualizations
+- Manual retraining triggers for experimentation
+
+---
+
+## Tech Stack
+
+- Python
+- Streamlit
+- XGBoost
+- Evidently AI
+- SHAP
+- LIME
+- Joblib
+- Scikit-learn
+
+---
+
+## Use Cases
+
+- Customer churn prediction systems
+- Continuous ML deployment pipelines
+- MLOps experimentation and education
+- Model monitoring and governance demos
+
+---
+
+## Future Improvements
+
+- CI/CD integration for model promotion
+- Online learning support
+- Cloud-based model registry
+- Feature-level drift attribution
+- Alerting via Slack or email
