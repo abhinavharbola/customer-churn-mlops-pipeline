@@ -49,7 +49,6 @@ The model registry and `models/` directory are created automatically on first ru
 │   ├── reference_data.csv
 │   └── prediction_log.csv
 ├── src/
-
 │   ├── explainability.py
 │   ├── ml_logic.py
 │   ├── mlops_engine.py
