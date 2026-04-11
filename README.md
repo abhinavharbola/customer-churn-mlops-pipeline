@@ -66,13 +66,13 @@ The model registry and `models/` directory are created automatically on first ru
 
 ## Screenshots
 
-<img src="images/live_metrics.png" width="900"/>
+| Live Metrics | Drift Monitor |
+|-------------|--------------|
+| <img src="images/live_metrics.png" width="100%"/> | <img src="images/drift_monitor.png" width="100%"/> |
 
-<img src="images/drift_monitor.png" width="900"/>
-
-<img src="images/mlops_pipeline.png" width="900"/>
-
-<img src="images/explainability.png" width="750"/>
+| MLOps Pipeline | Explainability |
+|----------------|----------------|
+| <img src="images/mlops_pipeline.png" width="100%"/> | <img src="images/explainability.png" width="100%"/> |
 
 ---
 
