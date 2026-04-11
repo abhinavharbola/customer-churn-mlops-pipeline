@@ -4,7 +4,7 @@ A production-grade MLOps system that predicts telecom customer churn, monitors d
 
 ---
 
-## Features
+## Key Features
 
 - XGBoost classifier with threshold-optimised predictions
 - KS drift detection across 19 features with per-feature p-value reporting
@@ -14,9 +14,9 @@ A production-grade MLOps system that predicts telecom customer churn, monitors d
 
 ---
 
-## Tech Stack
+## Stack
 
-`Python`, `Streamlit`, `XGBoost`, `Scikit-learn`, `SHAP`, `LIME`, `SciPy`, `Plotly`, `Pandas`
+`Python` · `Streamlit` · `XGBoost` · `Scikit-learn` · `SHAP` · `LIME` · `SciPy` · `Plotly` · `Pandas`
 
 ---
 
